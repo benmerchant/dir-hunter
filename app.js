@@ -8,6 +8,10 @@
  * @licence MIT
  * @copyright 2019
  */
+
+// TODO: modularize into a proper libary
+
+
 const fs = require('fs');
 const path = require('path');
 /** {String} get current directory and replace the slashes */
@@ -59,19 +63,13 @@ class TreeNode{
                           subsequent recursions will provide new 'Top' TreeNodes
                           with children of their own
 */
-const readCurrentDirectoryAndReturnAllFiles = (err,currentDir) => {
-  if(err) console.log(err);
-  fs.readdir(currentDir,{withFileTypes:true},(err,filesArr) => {
-    if (err) {
-      console.log(err);
-    } else {
-      return (filesArr);
-    }
+const readCurrentDirectoryAndReturnAllFiles = (URLpath) => {
+  const readDirOptions = {withFileTypes:true};
+  fs.readdir(path.dirname(URLpath),readDirOptions,(err,filesArr) => {
+    if (err) {console.log(err);}
+    else {return (filesArr);}
   });
-
-
-
-}
+};
 /**
 * modifies the TopTreeNode, namely TopTreeNode.children
 * @param {fs.Dirent obj} node mainly for building new TreeNodes
@@ -121,21 +119,22 @@ const doNodeStuff = (node, direntArr, currentParent) => {
 
 
   console.log(`>>>>${goodbyeMessage}\n`);
-}
+};
 /*** [ MAIN? Why not? ] */
 const MAIN = () => {
   console.log(`\nWelcome to ${homeDir}!\n=====> Let's get this mess sorted. <=====\n`);
   // construct TOP node
-  const TopTreeNode = new TreeNode(null, 'directory', homeDir.split('/').pop(), 0, 0); console.log(TopTreeNode);
+  const TopTreeNode = new TreeNode(null, 'directory', homeDir.split('/').pop(), 0, 0);
+  console.log(TopTreeNode);
   console.log(`^^^^^^^Current Parent^^^^^^^^^^<=====\n`);
-  console.log(homeDir);
 
-  console.log(readCurrentDirectoryAndReturnAllFiles(homeDir));
+  // console.log(readCurrentDirectoryAndReturnAllFiles(TopTreeNode.name));
   // console.log(arrayOfFiles); console.log(`^^^^^^^^First Dirents^^^^^^^^^^<=====\n`);
   //
   // arrayOfFiles.forEach((node,ii,thisArr) => {
   //   doNodeStuff(node, thisArr, currentParent);
   // });
+  // console.log('currentParent loaded with children');
   // console.log(currentParent);
 
 };

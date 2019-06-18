@@ -1,11 +1,8 @@
 {
-  "name": "noitunes",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "Dir Hunter",
+  "version": "0.0.3",
+  "description": "Crawl through myriad nested directories to locate and extract files to facilitate segregation based on their respective file types",
+  "main": "app.js",
   "author": "Ben Merchant <benjaminmerchant@gmail.com>",
-  "license": "ISC"
+  "license": "MIT"
 }
