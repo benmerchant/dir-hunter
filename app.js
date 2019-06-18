@@ -1,21 +1,67 @@
-/**
- * @filename '/noitunes/index.js'
- * @fileoverview crawl through a directory and its 287 sub-directories
- to find all 2,277 files,
- move them to a more easily accessible location,
- and pretty print the tree structure
- * @author Ben Merchant
- * @licence MIT
- * @copyright 2019
- */
-
-// TODO: modularize into a proper libary
-
+// TODO:
+// TODO:
+// TODO:
+//////////////////////    DELETE BEFORE COMMIT!!!!!
 
 const fs = require('fs');
 const path = require('path');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** {String} get current directory and replace the slashes */
 const homeDir = __dirname;// .split(path.sep).join('/');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 * instantiate a {new TreeNode}
 * @param {*} parent
@@ -49,6 +95,28 @@ class TreeNode{
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 * access the file system
 * loop through an array of what we'll call "entities" {fs.Dirent objects}
@@ -70,6 +138,33 @@ const readCurrentDirectoryAndReturnAllFiles = (URLpath) => {
     else {return (filesArr);}
   });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 * modifies the TopTreeNode, namely TopTreeNode.children
 * @param {fs.Dirent obj} node mainly for building new TreeNodes
