@@ -21,40 +21,8 @@ const path = require('path');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /** {String} get current directory and replace the slashes */
 const homeDir = __dirname;// .split(path.sep).join('/');
-
-
-
-
-
-
-
 
 
 
