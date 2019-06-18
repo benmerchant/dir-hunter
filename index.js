@@ -24,7 +24,7 @@ const FileDE = require('./lib/dirents/file.direntry');
 const AppState = { currentParent: null };
 
 const arrayFromFileFinderLibrary = fileFinder.readCurrentDirectoryReturnAllDirEnts ();
-/** @cheatsheet {parent, name, level, levelId} */
+/** @cheatsheet {Object}  :parent{String}, name{String}, level{Int}, {int} levelId} */
 
 const TopDirObject = { name: __dirname, parent: null };
 
@@ -32,22 +32,34 @@ const TopDirObject = { name: __dirname, parent: null };
 
 AppState.currentParent = new DirectoryDE(TopDirObject);
 
+
+
+
 arrayFromFileFinderLibrary.forEach((node, ii, origArray) => {
   let parentLvl = AppState.currentParent.level;
-  let tempDirentObj = {
+  let parentName = AppState.currentParent.name.split('\\').pop();
+  let tempPlainObj = {
     name: node.name,
     parent: AppState.currentParent.name.split('\\').pop(),
     level: parentLvl + 1,
     levelId: ii
   }
+
   if (node.isFile()) {
-    tempDirentObj.entryType = 'file';
+    if(name.split('.')===2){
+      tempPlainObj.fileType = name.split('.')[1];
+    } else {
+      tempPlainObj.fileType = 'unknown';
+    }
+console.log(tempPlainObj);
+    let TempDirent = new FileDE(tempPlainObj);
   } else if (node.isDirectory()) {
-    tempDirentObj.entryType = 'directory';
+    let TempDirent = new FileDE(tempPlainObj);
   } else {
     throw 'no clue how you got here, must have weird directory entries';
   }
-  AppState.currentParent.children.push(tempDirentObj);
+
+  AppState.currentParent.children.push(TempDirent);
 });
 
 console.log(AppState.currentParent);
