@@ -17,5 +17,5 @@ const Looper = require('./lib/looper');
 
 const arrayFromFileFinderLibrary = Looper.loopDirentsArray();
 
-
+ 
 Looper.oneIteration(arrayFromFileFinderLibrary,AppState);
