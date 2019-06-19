@@ -15,7 +15,8 @@
 const AppState = require('./lib/appstate.js');
 const Looper = require('./lib/looper');
 
+// 1. get dir array
 const arrayFromFileFinderLibrary = Looper.loopDirentsArray();
-
-
+// 2. call the dir array looper
 Looper.oneIteration(arrayFromFileFinderLibrary,AppState);
+console.log(AppState);
