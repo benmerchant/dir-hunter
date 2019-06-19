@@ -46,20 +46,17 @@ arrayFromFileFinderLibrary.forEach((node, ii, origArray) => {
   }
 
   if (node.isFile()) {
-    if(name.split('.')===2){
-      tempPlainObj.fileType = name.split('.')[1];
-    } else {
-      tempPlainObj.fileType = 'unknown';
-    }
-console.log(tempPlainObj);
-    let TempDirent = new FileDE(tempPlainObj);
-  } else if (node.isDirectory()) {
-    let TempDirent = new FileDE(tempPlainObj);
-  } else {
-    throw 'no clue how you got here, must have weird directory entries';
+    if(node.name.split('.')===2){tempPlainObj.fileType = name.split('.')[1];}
+    else {  tempPlainObj.fileType = 'unknown';}
+    AppState.currentParent.children.push(new FileDE(tempPlainObj));
+  }
+  else if (node.isDirectory()) {
+    AppState.currentParent.children.push(new DirectoryDE(tempPlainObj));
   }
 
-  AppState.currentParent.children.push(TempDirent);
+  else {throw 'no clue how you got here, must have weird directory entries';}
+
+  // AppState.currentParent.children.push(TempDirent);
 });
 
 console.log(AppState.currentParent);
