@@ -1,6 +1,6 @@
 {
   "name": "Dir Hunter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Crawl through myriad nested directories to locate and extract files to facilitate segregation based on their respective file types",
   "main": "index.js",
   "author": "Ben Merchant <benjaminmerchant@gmail.com>",
