@@ -1,5 +1,7 @@
 # Dir Hunter
 
+- **0.0.5** restructuring for recursion of Looper
+
 - **0.0.4** refactor hastily written spaghetti code into modularized library.
         recursing through sub-directories
         I have no idea how to SemVer

@@ -8,7 +8,7 @@
  * @licence MIT
  * @copyright 2019
  *
- * @version 0.0.4 - separate into a proper library
+ * @version 0.0.5 - restructure for recursion
  */
 'use strict';
 
@@ -17,5 +17,5 @@ const Looper = require('./lib/looper');
 
 const arrayFromFileFinderLibrary = Looper.loopDirentsArray();
 
- 
+
 Looper.oneIteration(arrayFromFileFinderLibrary,AppState);
