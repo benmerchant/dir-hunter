@@ -12,7 +12,7 @@
  */
 'use strict';
 
-const FileFinder = require('./lib/fileRetrieval');
+
 const DirectoryDE = require('./lib/dirents/directory.direntry');
 const FileDE = require('./lib/dirents/file.direntry');
 const AppConfig = require('./lib/appConfig.js');
@@ -22,19 +22,27 @@ const AppConfig = require('./lib/appConfig.js');
 /** // TODO: change oneIteration fn so it does not alter state. and only has one return statement */
 
 
-const TopDirectoryDE = new DirectoryDE(AppConfig.TopDirObject);
-console.log(TopDirectoryDE);
 
-// 1. get fs.Dirent array
-/** @type {Array  fs.Dirent } call fileFinder  */
-const arrayFromFileFinderLibrary = FileFinder.readCurrentDirectoryReturnAllDirEnts();
+dirIterator();
+
+function dirIterator(DirectoryEntryObject){
+  /** // TODO: send files to FileDE()........ */
+  let currentDirectory = new DirectoryDE(AppConfig._topDirObject);
+  let previousDirectory = null;
+
+  const _dirIterator = (currentDirectory, previousDirectory) => {
+    if(currentDirectory.children.length > 0){
+        currentDirectory.children.forEach((child, ii, currDirChildArr) => {
+          dirIterator(child);
+        });
+        console.log(currentDirectory);
+    }
+  }
 
 
+  _dirIterator(currentDirectory,previousDirectory);
 
-
-
-
-
+}
 
 function compareChildrenLenToDirentLen(currentParentChildLen, currentDirArrayLen) {
   // if children.length = direntArray.length, children have all been checked
