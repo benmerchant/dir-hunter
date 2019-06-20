@@ -1,51 +1,38 @@
 /**
-  * @filename lib\looper.js
-  * @fileoverview defines and exports the function that will be called
-  * recursively  by child elements
-  *
-  * @author Ben Merchant
-  * @licence MIT
-  * @copyright 2019
-  * @version 0.0.5 - restructure for recursion
-  */
+ * @filename '/noitunes/index.js'
+ * @fileoverview crawl through a directory and its 287 sub-directories
+ to find all 2,277 files,
+ move them to a more easily accessible location,
+ and pretty print the tree structure
+ * @author Ben Merchant <https://benmerchant.dev>
+ * @licence MIT
+ * @copyright 2019
+ *
+ * @version 0.0.5 - restructure for recursion
+ */
+'use strict';
 
-/**
-  *
-  *
-  * @param {Array | fs.Dirent} direntArray
-  *
-  * @returns {*}
-  *
-  */
+const FileFinder = require('./lib/fileRetrieval');
+const DirectoryDE = require('./lib/dirents/directory.direntry');
+const FileDE = require('./lib/dirents/file.direntry');
+const AppConfig = require('./lib/appConfig.js');
 
-const fileFinder = require('./fileRetrieval');
-const DirectoryDE = require('./dirents/directory.direntry');
-const FileDE = require('./dirents/file.direntry');
-
+/** // TODO: create function that will accept the top dir and create it like the rest */
+/** // TODO: normalise TopDirentObj to have name like the rest of them */
+/** // TODO: change oneIteration fn so it does not alter state. and only has one return statement */
 
 
-const looper = {};
+const TopDirectoryDE = new DirectoryDE(AppConfig.TopDirObject);
+console.log(TopDirectoryDE);
 
-/**
-  * @returns {Array | Dirent}
-  */
+// 1. get fs.Dirent array
+/** @type {Array  fs.Dirent } call fileFinder  */
+const arrayFromFileFinderLibrary = FileFinder.readCurrentDirectoryReturnAllDirEnts();
+// 2. call the dir array looper
+oneIteration(arrayFromFileFinderLibrary,AppConfig.TopDirObject);
 
-looper.loopDirentsArray = () => {
-  /** @type {array} call fileFinder  */
-  return fileFinder.readCurrentDirectoryReturnAllDirEnts();
-};
 
-/**
-  * @param {Array | Dirent} currentDirEntries
-  * @param {Object} currentcurrentAppState
-  * @param {*} arg
-  *
-  * @returns {*}
-  *
-  */
-
-/** // TODO: change function so it does not alter state. and only has one return statement */
-looper.oneIteration = (currentDirEntries, currentAppState) => {
+function oneIteration(currentDirEntries, currentAppState) {
   currentDirEntries.forEach((node, ii, origArray) => {
     let parentLvl = currentAppState.currentParent.level;
     let parentName = currentAppState.currentParent.name.split('\\').pop();
@@ -98,5 +85,3 @@ function makeFileDE(nodeInput, tempPlainObjInput) {
 function makeDirectoryDE(tempPlainObjInput){
   return new DirectoryDE(tempPlainObjInput);
 }
-
-module.exports = looper;
