@@ -27,24 +27,25 @@ function dirIterator(){
   /** // TODO: send files to FileDE()........ */
   let currentDirectory = new DirectoryDE(AppConfig._topDirObject);
   let previousDirectory = null;
+  let iiii = 0;
 
-  console.log(currentDirectory);
-let iii;
-  while(iii<1){
+
+
     const _dirIterator = (currentDirectory, previousDirectory) => {
-      if(currentDirectory.children.length > 0){
-          currentDirectory.children.forEach((child, ii, currDirChildArr) => {
-            dirIterator(child);
+      if(currentDirectory.childrenDirs.length > 0){
+          currentDirectory.childrenDirs.forEach((child, ii, currDirChildArr) => {
+            console.log(iiii); iiii += 1;
+            _dirIterator(child);
           });
-          console.log(currentDirectory);
       }
+
     }
 
 
 
   _dirIterator(currentDirectory,previousDirectory);
-  iii += 1;
-}
+
+
 }
 function compareChildrenLenToDirentLen(currentParentChildLen, currentDirArrayLen) {
   // if children.length = direntArray.length, children have all been checked
