@@ -6,7 +6,7 @@
             touch all 8 TODOs
             add GitHub Issues/Project/Milestone
 
-# Previous Releases
+## Previous Releases
 
 - **0.0.5** restructuring for recursion of Looper
 
