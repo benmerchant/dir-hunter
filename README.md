@@ -1,5 +1,13 @@
 # Dir Hunter
 
+- **0.0.6** remove commented code
+            tighten up annotations
+            refactor some variable names
+            touch all 8 TODOs
+            add GitHub Issues/Project/Milestone
+
+# Previous Releases
+
 - **0.0.5** restructuring for recursion of Looper
 
 - **0.0.4** refactor hastily written spaghetti code into modularized library.
