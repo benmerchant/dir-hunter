@@ -14,7 +14,7 @@ The second reason for this project is the desire to learn more JavaScript & Node
 
 ## Current Release (WIP)
 - **0.0.6** remove commented code
-            tighten up annotations
+            tighten up annotations (I'm aware they are trifling more than decoration without a transpiler, but we're keeping this Pure-Node.js)
             refactor some variable names
             touch all 8 TODOs
             add GitHub Issues/Project/Milestone
